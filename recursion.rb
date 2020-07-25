@@ -36,21 +36,20 @@ def fib(n)
 end
 
 # flattens an array
-def flatten(arr)
-  if arr[0].empty?
-    arr.delete_at(0)
+def flatten(arr, flat = [])
+  arr.each do |a|
+    if a.is_a?(Array)
+      flatten(a,flat)
+    else
+      flat.push(a)
+    end
   end
-  if arr.none? {|a| a.is_a?(Array)}
-    arr
-  else
-   
-    arr.push(arr[0].delete_at(0))
-    flatten(arr)
-    
-  end
+  flat
 end
 
+p flatten([[1,2],[3,4]])
+
 # flatten([[1,2],[3,4]]) => [1,2,3,4]
-# flatten([[1,[8,9]],[3,4]]) => ERROR
+# flatten([[1,[8,9]],[3,4]]) => [1,8,9,3,4]
 
 
