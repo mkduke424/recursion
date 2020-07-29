@@ -112,4 +112,18 @@ def fibs_rec(num, fib = [0,1])
 end
 
 
+# Merge sort
+arr = [1,3,5,2,6,7]
+
+# Splits the array into halves 
+if arr.length.even?
+  arr1 = arr[0..((arr.length-1)/2)]
+  arr2 = arr[(arr.length/2)..(arr.length)]
+else
+  arr1 = arr[0..((arr.length-2)/2)]
+  arr2 = arr[(arr.length/2)..(arr.length)]
+end
+
+def merge(arr1,arr2,arr)
+end
 
