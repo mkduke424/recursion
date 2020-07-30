@@ -162,6 +162,8 @@ def merge_sort(arr)
     merge_sort(arr1)
     merge_sort(arr2)
     merge(arr1,arr2,arr)
+  else
+    arr
   end
 end
 
