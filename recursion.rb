@@ -112,18 +112,57 @@ def fibs_rec(num, fib = [0,1])
 end
 
 
+
+
+def merge (arr1,arr2,arr)
+  arr1_counter = 0
+  arr2_counter = 0
+  arr_counter = 0
+
+  while arr1_counter < (arr1.length) && arr2_counter < (arr2.length) do
+    if arr1[arr1_counter] < arr2[arr2_counter]
+      arr[arr_counter] = arr1[arr1_counter]
+      arr1_counter += 1
+    else
+      arr[arr_counter]= arr2[arr2_counter]
+      arr2_counter += 1
+    end
+    arr_counter += 1
+  end
+
+  if arr1_counter == arr1.length
+    while arr2_counter < arr2.length do
+      arr[arr_counter] = arr2[arr2_counter]
+      arr2_counter += 1
+      arr_counter += 1
+    end
+  else
+    while arr1_counter < arr1.length do
+      arr[arr_counter] = arr1[arr1_counter]
+      arr1_counter += 1
+      arr_counter += 1
+    end
+  end
+  arr
+end
+
 # Merge sort
-arr = [1,3,5,2,6,7]
 
+def merge_sort(arr)
 # Splits the array into halves 
-if arr.length.even?
-  arr1 = arr[0..((arr.length-1)/2)]
-  arr2 = arr[(arr.length/2)..(arr.length)]
-else
-  arr1 = arr[0..((arr.length-2)/2)]
-  arr2 = arr[(arr.length/2)..(arr.length)]
+
+  if arr.length > 1
+    if arr.length.even?
+      arr1 = arr[0..((arr.length-1)/2)]
+      arr2 = arr[(arr.length/2)..(arr.length)]
+    else
+      arr1 = arr[0..((arr.length-2)/2)]
+      arr2 = arr[(arr.length/2)..(arr.length)]
+    end
+    merge_sort(arr1)
+    merge_sort(arr2)
+    merge(arr1,arr2,arr)
+  end
 end
 
-def merge(arr1,arr2,arr)
-end
-
+# p merge_sort([7,4,3,6,1]) => [1,3,4,6,7]
